@@ -13,12 +13,13 @@
     "angular-sanitize": "^1.6.4",
     "angular-touch": "^1.6.4",
     "bootstrap-sass": "^3.3.7",
+    "chart.js": "^2.5.0",
+    "express": "^4.16.2",
     "highcharts-ng": "^1.1.0",
     "jquery": "^3.2.1",
     "ng-toast": "^2.0.0",
     "ngmodal": "^2.0.1",
-    "pouchdb": "^6.1.2",
-    "chart.js": "^2.5.0"
+    "pouchdb": "^6.1.2"
   },
   "repository": {
     "type": "git",

@@ -17,7 +17,8 @@
     "jquery": "^3.2.1",
     "ng-toast": "^2.0.0",
     "ngmodal": "^2.0.1",
-    "pouchdb": "^6.1.2"
+    "pouchdb": "^6.1.2",
+    "chart.js": "^2.5.0"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "autoprefixer": "^6.7.7",
     "express": "^4.15.2",
+    "fs-promise": "^2.0.2",
     "imagemin": "^5.2.2",
     "jasmine-core": "^2.2.0",
     "jshint": "^2.9.4",

@@ -64,6 +64,7 @@
     "build:all": "npm run clean && npm run build:css && npm run build:js && npm run imagemin && npm run copy:all",
     "serve": "node server.js",
     "watch:css": "onchange 'app/styles/*.scss' -- npm run build:css",
-    "watch:js": "onchange 'app/scripts/*.js' -- npm run build:js"
+    "watch:js": "onchange 'app/scripts/*.js' -- npm run build:js",
+    "postinstall": "build:all"
   }
 }

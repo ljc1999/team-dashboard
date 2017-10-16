@@ -1,16 +1,15 @@
-# easterdash
+# Team Dashboard
+
+The team dashboad to track progress over the Mission to Mars programme.
 
 ### MUCH WOW!!!
 
-Look at all these libraries I cobbled together and tests I didn't write!
+Look at all these libraries Barry cobbled together and tests he didn't write!
 
-### SO AMAZE!!!
-
-Check out these commit messages!
 
 ### VERY UNFINISHED!!!
 
-Need to add a sync to remote couchDB backend. AKA The Boringest Bit.
+Need to add a sync to remote couchDB backend.
 
 If this gets any bigger than two pages, or is going to be used again, re-add
 karma to the grunt test task and write some tests ya lazy scoundrel.
@@ -31,7 +30,8 @@ Das ist alles.
 
     npm install;
     npm run build:all; #to build once
-
     npm run serve; # to serve as an application
 
-There is also a "watch" task in the npm scripts, but I've not used it yet. Once I know it works I'll document that here.
+To use brower-sync, in a new terminal navigate to the project root and run:
+
+    browser-sync start --proxy 'localhost:9000'

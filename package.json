@@ -19,7 +19,10 @@
     "ngmodal": "^2.0.1",
     "pouchdb": "^6.1.2"
   },
-  "repository": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SoftwareCornwall/team-dashboard"
+  },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
     "express": "^4.15.2",

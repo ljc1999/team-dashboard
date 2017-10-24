@@ -1,4 +1,4 @@
-"stories": {
+[{
   "s1": {
     "description": "As a mentor I want to see the onboard LED flash so that I am confident the team can deploy working code to the Arduino.",
     "acceptance": "Given a working arduino when the code is deployed then the onboard LED flashes on for 1 second and off for 1 second.",
@@ -64,4 +64,4 @@
     "acceptance": "Given the robot has found and is following a light as in S12, it must stop at obstacles and find a way around until it arrives at the light source.",
     "value": "20"
   }
-}
+}]

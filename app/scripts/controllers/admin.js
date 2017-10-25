@@ -11,7 +11,7 @@
  * {name: 'Team #III', description: 'Doing some awesome stuff an\' that!', balance:213},
  * {name: 'Team #Ω', description: 'Doing some awesome stuff an\' that!', balance:312}
  */
-angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ngToast', function ($scope, teamDb, ngToast) {
+angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ngToast', '$http', function ($scope, teamDb, ngToast, $http) {
     var saveTransaction = function(title, delta, teamName) {
         var transaction;
         delta = delta || 0;
@@ -88,6 +88,22 @@ angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ng
         } else {
           ngToast.create({className: 'danger', content: 'Incorect secret.'});
         }
+    };
 
+    $http({
+      method: 'GET',
+      url: 'http://localhost:9000/stories.json'
+    }).then(function(resp) {
+      $scope.stories = resp.data;
+    });
+
+    $scope.updatePayout = function(){
+      var storyID = 's' + $scope.taskCompleted.description.substr(6);
+
+      for (var i = 0; i < $scope.stories.length; i++) {
+        if ($scope.stories[i].id === storyID) {
+          document.getElementById('task-payout').value = $scope.stories[i].value;
+        }
+      }
     };
 }]);

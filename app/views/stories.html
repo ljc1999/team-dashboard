@@ -11,8 +11,8 @@
     </thead>
 
     <tbody>
-      <tr ng-repeat="(id, story) in stories[0]">
-        <th>{{id.toUpperCase()}}</th>
+      <tr ng-repeat="story in stories">
+        <th>{{story.id.toUpperCase()}}</th>
         <td>{{story.description}}</td>
         <td>{{story.acceptance}}</td>
         <td>{{story.value}}</td>

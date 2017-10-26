@@ -14,7 +14,11 @@
 angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ngToast', '$http', function ($scope, teamDb, ngToast, $http) {
     var saveTransaction = function(title, delta, teamName) {
         var transaction;
-        delta = delta || 0;
+        if (document.getElementById('task-payout').value.length > 0) {
+          delta = document.getElementById('task-payout').value;
+        } else {
+          delta = delta || 0;
+        }
         transaction = {
             time: new Date().getTime(),
             title: title,
@@ -24,7 +28,7 @@ angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ng
         teamDb.get('teams').then(function(res) {
             res.data.some(function(stored) {
                 if (stored.name === teamName) {
-                    stored.balance += delta;
+                    stored.balance = parseFloat(stored.balance) + parseFloat(delta);
                     transaction.balance = stored.balance;
                     stored.transactions.push(transaction);
                     return true;

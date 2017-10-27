@@ -57,6 +57,27 @@ angular.module('easterdashApp').controller('MainCtrl', ['$scope', 'teamDb', func
         $scope.graphsReady = true;
     };
 
+    var buildTables = function() {
+      for(var i = 0; i <= $scope.teams.length; i++) {
+        var transactions = $scope.teams[i].transactions;
+        // loop over the transactions
+        var highestTrans = { title: 'Story 0' };
+
+        // assumes an initial invesment
+        for (var j = 1; j <= transactions.length; j++) {
+
+          // get the number from each, saving the current highest locally
+          try {
+            if ( parseInt(transactions[j].title.substr(6)) > parseInt(highestTrans.title.substr(6))) {
+              // save the highest trans
+              highestTrans.title = transactions[j].title;
+            }
+          } catch (e) {}
+        }
+        $scope.teams[i].currentStory = highestTrans.title;
+      }
+    };
+
     $scope.teams = [];
     $scope.graphsReady = false;
     $scope.debug = false;
@@ -68,6 +89,7 @@ angular.module('easterdashApp').controller('MainCtrl', ['$scope', 'teamDb', func
                 $scope.loading = false;
                 $scope.teams = response.data;
                 buildGraphs();
+                buildTables();
             } else {
                 dbError(response);
             }

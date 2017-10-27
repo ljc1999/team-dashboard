@@ -26,6 +26,34 @@
 
   </div>
 
+  <div class="col-md-7">
+    <div class="panel panel-default">
+
+      <div class="panel-heading">
+        <h4>Current Stories</h4>
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Team Name</th>
+              <th>Current Munies</th>
+              <th>Current Story</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="team in teams">
+              <td>{{ team.name }}</td>
+              <td>£{{ team.balance }}</td>
+              <td>{{ team.currentStory }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
   <div class="col-md-12" ng-if="debug">
     <pre ng-bind="response | json"></pre>
   </div>

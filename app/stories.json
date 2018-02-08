@@ -76,5 +76,17 @@
     "description": "As a robot I want to follow a homing beacon across hostile terrain, safely avoiding obstacles and steep drops whilst continuing to follow the beacon so that I can find my way safely back at the end of a mission.",
     "acceptance": "Given the robot has found and is following a light as in S12, it must stop at obstacles and find a way around until it arrives at the light source.",
     "value": "20000"
+  },
+  {
+    "id": "s14",
+    "description": "As an entrepreneur, I want to be able to promote our Mission to Mars to potential investors via online media.",
+    "acceptance": "Given that the teams have access to relevant tools, teams should produce a range of graphics and video for using on social media.",
+    "value": "15000"
+  },
+  {
+    "id": "s15",
+    "description": "As an entrepreneur, I want to be able to demostrate the robots capabilities to potential investors.",
+    "acceptance": "Given that the teams have reached a minimum of story 11, teams can create a demo mode showing off as many features of the robot as possible. Only one team can be awarded this prize.",
+    "value": "25000"
   }
 ]

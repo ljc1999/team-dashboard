@@ -50,7 +50,7 @@
   {
     "id": "s9",
     "description": "As a robot I want to be able to draw a figure of eight in the forwards direction and then in reverse so that I can display my manoeurability.",
-    "acceptance": "As previous story with the addition of a 1 second pause on completion of the forward figure of eight and then complete a reverse figure of eight.",
+    "acceptance": "As previous story with the addition of a 1 second pause on completion of the forward figure of eight and then complete a reverse figure of eight along the same path.",
     "value": "8000"
   },
   {

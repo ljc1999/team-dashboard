@@ -75,7 +75,7 @@
         </div>
     </div>
 
-    <div class="col-md-12">
+    <div class="col-md-6">
         <div class="panel panel-info">
             <div class="panel-heading">
                 <h4>Add a team!</h4>
@@ -99,6 +99,27 @@
                 <div class="form-group">
                     <button type="button" ng-click="addTeam(newTeam)" class="btn btn-primary btn-block">Save New Team!</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4>Remove a team!</h4>
+            </div>
+            <div class="panel-body">
+              <div class="form-group">
+                  <label for="remove-team-name">Team name</label>
+                  <select id="remove-team-name"
+                          ng-model="taskCompleted.team"
+                          ng-options="team as team.name for team in teams"
+                          class="form-control"></select>
+              </div>
+              <div class="form-group">
+                  <button type="button" ng-click="removeTeam(taskCompleted.team)"
+                  class="btn btn-primary btn-block">Remove Team!</button>
+              </div>
             </div>
         </div>
     </div>

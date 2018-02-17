@@ -6,11 +6,8 @@
  * @description
  * # AboutCtrl
  * Controller of the easterdashApp
- * {name: 'Team #A', description: 'Doing some awesome stuff an\' that!', balance:123},
- * {name: 'Team #2', description: 'Doing some awesome stuff an\' that!', balance:231},
- * {name: 'Team #III', description: 'Doing some awesome stuff an\' that!', balance:213},
- * {name: 'Team #Ω', description: 'Doing some awesome stuff an\' that!', balance:312}
- */
+*/
+
 angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ngToast', '$http', function ($scope, teamDb, ngToast, $http) {
     var saveTransaction = function(title, delta, teamName) {
         var transaction;
@@ -67,6 +64,20 @@ angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ng
             description: '',
             name: ''
         };
+    };
+
+    $scope.removeTeam = function(oldTeam){
+      teamDb.get('teams').then(function(res){
+        res.data = res.data.filter(function(team) {
+            return team.name !== oldTeam.name;
+        });
+        teamDb.put(res);
+        $scope.teams = res.data;
+        ngToast.create({className: 'success', content: 'Team removed.'});
+      }).catch(function(err){
+        console.warn('ADMIN: Team not deleted', err);
+        ngToast.create({className: 'failure', content: 'Team not removed.'});
+      });
     };
 
     teamDb.get('teams').then(function(res) {

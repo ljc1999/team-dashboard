@@ -104,6 +104,15 @@ angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ng
           ngToast.create({className: 'danger', content: 'Incorect secret.'});
         }
     };
+    $scope.saveBonus = function(bonus) {
+      if (bonus.secret === 'secret'){
+        saveTransaction(bonus.description, bonus.value, bonus.team.name);
+        ngToast.create({className: 'success', content: 'Bonus Applied.'});
+        $scope.bonus = {value: '', description: ''};
+      } else {
+        ngToast.create({className: 'danger', content: 'Incorect secret.'});
+      }
+    };
 
     $http({
       method: 'GET',

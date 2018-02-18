@@ -88,7 +88,7 @@ angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ng
 
     $scope.saveCost = function(costIncurred) {
       if (costIncurred.secret === 'secret'){
-        saveTransaction(costIncurred.description, -1 * costIncurred.value, costIncurred.team.name);
+        saveTransaction('Cost Incurred', -1 * costIncurred.value, costIncurred.team.name);
         ngToast.create({className: 'success', content: 'Cost saved.'});
         $scope.costIncurred = {value: '', description: ''};
       } else {
@@ -106,7 +106,7 @@ angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ng
     };
     $scope.saveBonus = function(bonus) {
       if (bonus.secret === 'secret'){
-        saveTransaction(bonus.description, bonus.value, bonus.team.name);
+        saveTransaction('bonus', bonus.value, bonus.team.name);
         ngToast.create({className: 'success', content: 'Bonus Applied.'});
         $scope.bonus = {value: '', description: ''};
       } else {

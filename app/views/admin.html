@@ -20,7 +20,7 @@
 
                     <select name="task-description" id="task-description" ng-model="taskCompleted.description"
                             class="form-control" ng-change="updatePayout()">
-                      <option ng-repeat="story in stories.missions[{{settings.stories}}]" value="Story {{story.id.substr(1)}}">Story {{story.id.substr(1)}}</option>
+                      <option ng-repeat="story in stories.missions[settings.stories]" value="Story {{story.id.substr(1)}}">Story {{story.id.substr(1)}}</option>
                     </select>
 
                 </div>

@@ -19,7 +19,6 @@ angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ng
 
     appSettings.get().then(function(response) {
       $scope.settings = response;
-      console.log('response', response);
     });
 
     var saveTransaction = function(title, delta, teamName) {
@@ -136,10 +135,11 @@ angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ng
 
     $scope.updatePayout = function(){
       var storyID = 's' + $scope.taskCompleted.description.substr(6);
+      var missions = $scope.stories.missions[$scope.settings.stories];
 
-      for (var i = 0; i < $scope.stories.length; i++) {
-        if ($scope.stories[i].id === storyID) {
-          document.getElementById('task-payout').value = $scope.stories[i].value;
+      for (var i = 0; i < missions.length; i++) {
+        if (missions[i].id === storyID) {
+          document.getElementById('task-payout').value = missions[i].value;
         }
       }
     };

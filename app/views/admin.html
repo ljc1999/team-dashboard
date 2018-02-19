@@ -20,7 +20,7 @@
 
                     <select name="task-description" id="task-description" ng-model="taskCompleted.description"
                             class="form-control" ng-change="updatePayout()">
-                      <option ng-repeat="story in stories.missions[settings.stories]" value="Story {{story.id.substr(1)}}">Story {{story.id.substr(1)}}</option>
+                      <option ng-repeat="story in stories.missions[settings.stories]" value="Story {{story.id.substr(1)}}">{{ story.id.substr(0,1) === "s" ?  "Story" : "Bonus" }} {{story.id.substr(1)}}</option>
                     </select>
 
                 </div>
@@ -149,7 +149,7 @@
         </div>
     </div>
 
-    <div class="col-md-12">
+    <!-- <div class="col-md-12">
 
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -162,7 +162,7 @@
                 <label class="text-warning">Pull will overwrite local changes!!</label>
             </div>
         </div>
-    </div>
+    </div> -->
 
 </div>
 

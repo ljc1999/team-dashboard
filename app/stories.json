@@ -96,26 +96,38 @@
     "professionals": [
       {
         "id": "s1",
-        "description": "As a client I want to see the onboard LED flash so that I am confident the team can deploy working code onto the robot.",
-        "acceptance": "Given the arduino works and is connected to the Raspberry PI via USB, when the code is deployed then the onboard LED flashes continuously for 1 second on and 1 second off.",
-        "value": "2000"
+        "description": "As a client I must see the onboard LED flash so that I am confident the team can deploy working code onto the robot.",
+        "acceptance": "Given the robots onboard arduino works and is connected to the Raspberry PI via USB, when the code is deployed the onboard LED flashes continuously for 1 second on and 1 second off.",
+        "value": "5000"
       },
       {
         "id": "s2",
-        "description": "As a robot I want to drive forward 2 meters and stop so that I can display accurate distance measurement.",
-        "acceptance": "Given the code is sucessfully deployed, when the reset button is pressed the robot moves forwards 2 meters in a straight line, stops and remains stopped. The robot should not deviate from the 2cm tolerance shown on the martian surface.",
-        "value": "5000"
+        "description": "As a robot I want to be able to drive forward 2 meters and stop so that I can display accurate distance measurement.",
+        "acceptance": "Given the code is sucessfully deployed, when the reset button is pressed the robot moves forwards 2 meters in a straight line, stops and remains stopped. The robot should not deviate from the 2cm tolerance shown on the Martian surface.",
+        "value": "10000"
       },
       {
         "id": "s3",
-        "description": "As a robot I want to see LEDs progress through a set pattern to simulate a robot going forward for 10 seconds, stop and reverse for 1 second so that the team have a working development environment for motor control.",
-        "acceptance": "Given the code is deployed, when the reset button is pressed then the LEDs follow the correct sequence.",
-        "value": "5000"
+        "description": "As a robot I want to be able to navigate through a martian maze without falling into a ravine.",
+        "acceptance": "Given the code is sucessfully deployed, when the reset button is pressed the robot navigates from the starting point to the end of the maze without falling off of the Martian surface. The robot must be able to handle different maze configurations. ",
+        "value": "15000"
       },
       {
         "id": "s4",
-        "description": "As a robot I want to move forward for 1 seconds, pause for 1 second and reverse for 1 seconds so that I can display basic motor control.",
-        "acceptance": "Given the code is deployed, when the reset button is pressed the robot moves forwards for 1 seconds, stops for 1 second, reverses for 1 seconds and stops for one second repeatedly.",
+        "description": "As a robot I want to strut my stuff and show off my abilities to help raise awareness of our mission.",
+        "acceptance": "Given the code is sucessfully deployed, then the reset button is pressed the robot goes into 'demo mode'. Using a combination of sensor data, fine motor control and flair, the robot should show off its capabilities. The robot should remian within the confines of the Martian terrain. Bonuses are available for impressing the clients.",
+        "value": "25000"
+      },
+      {
+        "id": "b1",
+        "description": "Bonus - Unit Tests",
+        "acceptance": "Implement some form of unit testing for robots code. Full coverage is not expected.",
+        "value": "10000"
+      },
+      {
+        "id": "b2",
+        "description": "Bonus - Code Quality",
+        "acceptance": "Given to any team judged to have 'quality code' towards the end of the day.",
         "value": "5000"
       }
     ]

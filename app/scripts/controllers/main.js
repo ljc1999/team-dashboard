@@ -41,7 +41,7 @@ angular.module('easterdashApp').controller('MainCtrl', ['$scope', 'teamDb', '$ht
               		}]
           		}],
       		title: {
-      		      	text: 'The rise and fall of teams'
+      		      	text: null
       		},
       		credits: {
       		      	enabled: false

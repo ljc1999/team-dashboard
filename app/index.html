@@ -67,7 +67,19 @@
                 <input type="password" ng-model="settings.dbPassword" id="db-password" class="form-control">
               </div>
           </div>
-          <hr>
+          <hr />
+          <div class="form-group">
+              <label class="col-sm-3" for="mission-stories">Current Mission Stories</label>
+              <div class="col-sm-9">
+                <select type="text" ng-model="settings.stories" id="mission-stories" class="form-control">
+                  <option ng-repeat="(key,story) in stories" value="{{key}}">
+                    {{key}}
+                  </option>
+                </select>
+
+              </div>
+          </div>
+          <hr />
           <div class="form-group">
               <div class="col-sm-9 col-sm-offset-3">
                 <button ng-click="saveAppSettings(settings)" class="btn btn-primary">Save settings</buttonn>

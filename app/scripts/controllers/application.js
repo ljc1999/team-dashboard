@@ -7,7 +7,14 @@
  * # ApplicationCtrl
  * Controller of the easterdashApp
  */
-angular.module('easterdashApp').controller('ApplicationCtrl', ['$scope', '$location', 'appSettings', function ($scope, $location, appSettings) {
+angular.module('easterdashApp').controller('ApplicationCtrl', ['$scope', '$location', 'appSettings', '$http', function ($scope, $location, appSettings, $http) {
+  $http({
+    method: 'GET',
+    url: 'http://localhost:9000/stories.json'
+  }).then(function(resp) {
+    $scope.stories = resp.data.missions;
+  });
+
   var padZeros = function(str) {
     str = '' + str; // coerce to string, because Javascript.
     while (str.length < 2) {

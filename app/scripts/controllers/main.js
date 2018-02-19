@@ -7,7 +7,14 @@
  * # MainCtrl
  * Controller of the easterdashApp
  */
-angular.module('easterdashApp').controller('MainCtrl', ['$scope', 'teamDb', function ($scope, teamDb) {
+angular.module('easterdashApp').controller('MainCtrl', ['$scope', 'teamDb', '$http', function ($scope, teamDb, $http) {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:9000/stories.json'
+    }).then(function(resp) {
+      $scope.stories = resp.data.missions;
+    });
+
     var dbError = function(response) {
         $scope.loading = false;
         $scope.response = response;

@@ -8,7 +8,20 @@
  * Controller of the easterdashApp
 */
 
-angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ngToast', '$http', function ($scope, teamDb, ngToast, $http) {
+angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ngToast', '$http', 'appSettings', function ($scope, teamDb, ngToast, $http, appSettings) {
+
+    $http({
+      method: 'GET',
+      url: 'http://localhost:9000/stories.json'
+    }).then(function(resp) {
+      $scope.stories = resp.data.missions;
+    });
+
+    appSettings.get().then(function(response) {
+      $scope.settings = response;
+      console.log('response', response);
+    });
+
     var saveTransaction = function(title, delta, teamName) {
         var transaction;
         if (document.getElementById('task-payout').value.length > 0) {

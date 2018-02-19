@@ -66,7 +66,8 @@
     "serve": "node server.js",
     "watch:css": "onchange 'app/styles/**/*.scss' -- npm run build:css",
     "watch:js": "onchange 'app/scripts/**/*.js' -- npm run build:js",
-    "watch:html": "onchange 'app/views/*.html' -- npm run copy:index && npm run copy:views",
+    "watch:html": "onchange 'app/views/*.html' -- npm run copy:views",
+    "watch:index": "onchange 'app/index.html' -- npm run copy:index",
     "postinstall": "npm run build:all"
   }
 }

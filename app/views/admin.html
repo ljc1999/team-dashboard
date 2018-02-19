@@ -5,7 +5,7 @@
         </p>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h4>Task Completed!</h4>
@@ -16,17 +16,16 @@
                     <select ng-model="taskCompleted.team" id="task-team" ng-options="team as team.name for team in teams" class="form-control"></select>
                 </div>
                 <div class="form-group">
-                    <label for="task-description">Task title</label>
-                    <!-- <input type="text" ng-model="taskCompleted.description" id="task-description" class="form-control"> -->
+                    <label for="task-description">Story Number</label>
 
                     <select name="task-description" id="task-description" ng-model="taskCompleted.description"
                             class="form-control" ng-change="updatePayout()">
-                      <option ng-repeat="story in stories" value="Story {{story.id.substr(1)}}">Story {{story.id.substr(1)}}</option>
+                      <option ng-repeat="story in stories.missions[{{settings.stories}}]" value="Story {{story.id.substr(1)}}">Story {{story.id.substr(1)}}</option>
                     </select>
 
                 </div>
                 <div class="form-group">
-                    <label for="task-payout">Payout</label>
+                    <label for="task-payout">Value</label>
                     <div class="input-group">
                         <div class="input-group-addon">£</div>
                         <input type="number" ng-model="taskCompleted.value" placeholder="0.0" id="task-payout" class="form-control">
@@ -43,7 +42,7 @@
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="panel panel-danger">
             <div class="panel-heading">
                 <h4>Cost incurred!</h4>
@@ -52,10 +51,6 @@
                 <div class="form-group">
                     <label for="cost-team">Team name</label>
                     <select ng-model="costIncurred.team" id="cost-team" ng-options="team as team.name for team in teams" class="form-control"></select>
-                </div>
-                <div class="form-group">
-                    <label for="cost-description">Brief description</label>
-                    <input type="text" ng-model="costIncurred.description" id="cost-description" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="cost-value">Cost amount</label>
@@ -75,7 +70,37 @@
         </div>
     </div>
 
-    <div class="col-md-12">
+    <div class="col-md-4">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h4>Bonus earned!</h4>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="bonus-team">Team name</label>
+                    <select ng-model="bonus.team" id="bonus-team" ng-options="team as team.name for team in teams" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                    <label for="task-payout">Value</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">£</div>
+                        <input type="number" ng-model="bonus.value" placeholder="0.0" id="bonus-payout" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="bonus-secret">Secret Code</label>
+                  <input type="password" ng-model="bonus.secret" id="bonus-secret" class="form-control">
+                </div>
+                <div class="form-group">
+                    <button type="button" ng-click="saveBonus(bonus)" class="btn btn-success">Pay this team!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col-md-6">
         <div class="panel panel-info">
             <div class="panel-heading">
                 <h4>Add a team!</h4>
@@ -99,6 +124,27 @@
                 <div class="form-group">
                     <button type="button" ng-click="addTeam(newTeam)" class="btn btn-primary btn-block">Save New Team!</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4>Remove a team!</h4>
+            </div>
+            <div class="panel-body">
+              <div class="form-group">
+                  <label for="remove-team-name">Team name</label>
+                  <select id="remove-team-name"
+                          ng-model="taskCompleted.team"
+                          ng-options="team as team.name for team in teams"
+                          class="form-control"></select>
+              </div>
+              <div class="form-group">
+                  <button type="button" ng-click="removeTeam(taskCompleted.team)"
+                  class="btn btn-primary btn-block">Remove Team!</button>
+              </div>
             </div>
         </div>
     </div>

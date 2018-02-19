@@ -11,7 +11,7 @@
     </thead>
 
     <tbody>
-      <tr ng-repeat="story in stories">
+      <tr ng-repeat="story in stories[settings.stories]">
         <th>{{story.id.toUpperCase()}}</th>
         <td>{{story.description}}</td>
         <td>{{story.acceptance}}</td>

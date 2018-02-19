@@ -6,12 +6,22 @@
  * @description
  * # AboutCtrl
  * Controller of the easterdashApp
- * {name: 'Team #A', description: 'Doing some awesome stuff an\' that!', balance:123},
- * {name: 'Team #2', description: 'Doing some awesome stuff an\' that!', balance:231},
- * {name: 'Team #III', description: 'Doing some awesome stuff an\' that!', balance:213},
- * {name: 'Team #Ω', description: 'Doing some awesome stuff an\' that!', balance:312}
- */
-angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ngToast', '$http', function ($scope, teamDb, ngToast, $http) {
+*/
+
+angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ngToast', '$http', 'appSettings', function ($scope, teamDb, ngToast, $http, appSettings) {
+
+    $http({
+      method: 'GET',
+      url: 'http://localhost:9000/stories.json'
+    }).then(function(resp) {
+      $scope.stories = resp.data.missions;
+    });
+
+    appSettings.get().then(function(response) {
+      $scope.settings = response;
+      console.log('response', response);
+    });
+
     var saveTransaction = function(title, delta, teamName) {
         var transaction;
         if (document.getElementById('task-payout').value.length > 0) {
@@ -69,6 +79,20 @@ angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ng
         };
     };
 
+    $scope.removeTeam = function(oldTeam){
+      teamDb.get('teams').then(function(res){
+        res.data = res.data.filter(function(team) {
+            return team.name !== oldTeam.name;
+        });
+        teamDb.put(res);
+        $scope.teams = res.data;
+        ngToast.create({className: 'success', content: 'Team removed.'});
+      }).catch(function(err){
+        console.warn('ADMIN: Team not deleted', err);
+        ngToast.create({className: 'failure', content: 'Team not removed.'});
+      });
+    };
+
     teamDb.get('teams').then(function(res) {
         $scope.teams = res.data;
     }).catch(function() {
@@ -77,7 +101,7 @@ angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ng
 
     $scope.saveCost = function(costIncurred) {
       if (costIncurred.secret === 'secret'){
-        saveTransaction(costIncurred.description, -1 * costIncurred.value, costIncurred.team.name);
+        saveTransaction('Cost Incurred', -1 * costIncurred.value, costIncurred.team.name);
         ngToast.create({className: 'success', content: 'Cost saved.'});
         $scope.costIncurred = {value: '', description: ''};
       } else {
@@ -92,6 +116,15 @@ angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ng
         } else {
           ngToast.create({className: 'danger', content: 'Incorect secret.'});
         }
+    };
+    $scope.saveBonus = function(bonus) {
+      if (bonus.secret === 'secret'){
+        saveTransaction('bonus', bonus.value, bonus.team.name);
+        ngToast.create({className: 'success', content: 'Bonus Applied.'});
+        $scope.bonus = {value: '', description: ''};
+      } else {
+        ngToast.create({className: 'danger', content: 'Incorect secret.'});
+      }
     };
 
     $http({

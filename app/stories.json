@@ -91,6 +91,30 @@
         "description": "As an entrepreneur, I want to be able to demostrate the robots capabilities to potential investors.",
         "acceptance": "Given that the teams have reached a minimum of story 11, teams can create a demo mode showing off as many features of the robot as possible. Only one team can be awarded this prize.",
         "value": "25000"
+      },
+      {
+        "id": "b1",
+        "description": "Bonus - Unit Tests",
+        "acceptance": "Implement some form of unit testing for robots code. Full coverage is not expected.",
+        "value": "10000"
+      },
+      {
+        "id": "b2",
+        "description": "Bonus - Code Quality",
+        "acceptance": "Given to any team judged to have 'quality code' towards the end of the day.",
+        "value": "5000"
+      },
+      {
+        "id": "b3",
+        "description": "Bonus - Commented Code",
+        "acceptance": "Given to any team who have added meaningful comments to their code.",
+        "value": "5000"
+      },
+      {
+        "id": "b4",
+        "description": "Bonus - Version Control",
+        "acceptance": "Given to any team who have used version control to manage their code.",
+        "value": "10000"
       }
     ],
     "professionals": [

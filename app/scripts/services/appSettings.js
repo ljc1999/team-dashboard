@@ -1,6 +1,6 @@
 angular.module('easterdashApp').service('appSettings', ['pouchDB', function(pouchDB) {
     'use strict';
-    var settings = ['dbPassword', 'stories'];
+    var settings = ['dbPassword', 'stories', 'robotHireCost'];
     var db = pouchDB('appSettings');
     var self = {};
 

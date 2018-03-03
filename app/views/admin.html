@@ -53,11 +53,10 @@
                     <select ng-model="costIncurred.team" id="cost-team" ng-options="team as team.name for team in teams" class="form-control"></select>
                 </div>
                 <div class="form-group">
-                    <label for="cost-value">Cost amount</label>
-                    <div class="input-group">
-                        <div class="input-group-addon">£</div>
-                        <input type="number" ng-model="costIncurred.value" placeholder="0.00" id="cost-value" class="form-control">
-                    </div>
+                    <label for="cost-value">Minutes Used</label>
+                    <select ng-model="costIncurred.value" id="cost-value" class="form-control">
+                      <option ng-repeat="n in [].constructor(20) track by $index+1">{{$index+1}} Min</option>
+                    </select>
                 </div>
                 <div class="form-group">
                   <label for="cost-secret">Secret Code</label>

@@ -100,7 +100,8 @@ angular.module('easterdashApp').controller('AdminCtrl', ['$scope', 'teamDb', 'ng
 
     $scope.saveCost = function(costIncurred) {
       if (costIncurred.secret === 'secret'){
-        saveTransaction('Cost Incurred', -1 * costIncurred.value, costIncurred.team.name);
+        var cost = -1 * ($scope.settings.robotHireCost * costIncurred.value);
+        saveTransaction('Cost Incurred', cost, costIncurred.team.name);
         ngToast.create({className: 'success', content: 'Cost saved.'});
         $scope.costIncurred = {value: '', description: ''};
       } else {

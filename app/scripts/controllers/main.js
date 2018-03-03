@@ -67,12 +67,9 @@ angular.module('easterdashApp').controller('MainCtrl', ['$scope', 'teamDb', '$ht
     var buildTables = function() {
       for(var i = 0; i <= $scope.teams.length; i++) {
         var transactions = $scope.teams[i].transactions;
-        // loop over the transactions
         var highestTrans = { title: 'Story 0' };
 
-        // assumes an initial invesment
         for (var j = 1; j <= transactions.length; j++) {
-
           // get the number from each, saving the current highest locally
           try {
             if ( parseInt(transactions[j].title.substr(6)) > parseInt(highestTrans.title.substr(6))) {

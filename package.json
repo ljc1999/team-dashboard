@@ -68,6 +68,7 @@
     "watch:js": "onchange 'app/scripts/**/*.js' -- npm run build:js",
     "watch:html": "onchange 'app/views/*.html' -- npm run copy:views",
     "watch:index": "onchange 'app/index.html' -- npm run copy:index",
+    "watch:all": "npm run watch:css & npm run watch:js & npm run watch:html & npm run watch:index",
     "postinstall": "npm run build:all"
   }
 }

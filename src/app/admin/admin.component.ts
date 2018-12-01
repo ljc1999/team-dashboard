@@ -22,14 +22,14 @@ export class AdminComponent implements OnInit {
   settings;
   teams;
 
-  taskCompleted = {};
-  costIncurred = {};
-  bonus = {};
+  taskCompleted:any = {};
+  costIncurred:any = {};
+  bonus:any = {};
 
-  newTeam = {};
-  deleteTeam = {};
+  newTeam:any = {};
+  deleteTeam:any = {};
 
-  minutes = [];
+  minutes:any = [];
 
   ngOnInit() {
     this.http.get("./assets/stories.json").subscribe((res:any) => {

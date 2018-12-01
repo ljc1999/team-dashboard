@@ -11,12 +11,17 @@ import { StoriesComponent } from './stories/stories.component';
 import { SettingsComponent } from './settings/settings.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { LocalStorageModule } from 'angular-2-local-storage';
+import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 import { ChartModule } from 'angular2-highcharts';
 
 import { SettingsService } from './settings.service';
 import { TeamService } from './team.service';
 
 import * as highcharts from 'highcharts';
+
+export function highchartsFactory() {
+  return highcharts;
+}
 
 const routes = [
   { path: '', component: MainComponent },
@@ -38,11 +43,12 @@ const routes = [
     RouterModule.forRoot(routes),
     MDBBootstrapModule.forRoot(),
     HttpModule,
-    ChartModule.forRoot(highcharts),
+    ChartModule,
     LocalStorageModule.withConfig({ prefix: 'm2m-dashboard', storageType: 'localStorage' }),
     FormsModule
   ],
   providers: [
+    { provide: HighchartsStatic, useFactory: highchartsFactory },
     SettingsService,
     TeamService
   ],

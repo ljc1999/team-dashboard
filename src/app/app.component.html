@@ -1,0 +1,22 @@
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark cyan mb-3">
+  <mdb-navbar-brand>
+      <a href="#" class="navbar-brand">Mission to Mars</a>
+  </mdb-navbar-brand>
+  <links>
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item" [ngClass]="{ 'active': router.url == '/' }">
+              <a class="nav-link waves-light" mdbWavesEffect routerLink="">Team Standings <span class="sr-only" *ngIf="router.url == '/'">(current)</span></a>
+          </li>
+          <li class="nav-item" [ngClass]="{ 'active': router.url == '/admin' }">
+              <a class="nav-link waves-light" mdbWavesEffect routerLink="admin">Admin <span class="sr-only" *ngIf="router.url == '/'">(current)</span></a>
+          </li>
+          <li class="nav-item" [ngClass]="{ 'active': router.url == '/stories' }">
+              <a class="nav-link waves-light" mdbWavesEffect routerLink="stories">Stories <span class="sr-only" *ngIf="router.url == '/'">(current)</span></a>
+          </li>
+      </ul>
+      <a class="nav-link waves-light" [ngClass]="{ 'active': router.url == '/settings' }" mdbWavesEffect routerLink="settings"><i class="fa fa-cogs fa-lg white-text"></i></a>
+  </links>
+</mdb-navbar>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

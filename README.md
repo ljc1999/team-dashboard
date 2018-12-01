@@ -2,36 +2,25 @@
 
 The team dashboad to track progress over the Mission to Mars programme.
 
-### MUCH WOW!!!
+### UPDATES
 
-Look at all these libraries Barry cobbled together and tests he didn't write!
+Updated to Angular 6 and added MDBootstrap.
 
 
 ### VERY UNFINISHED!!!
 
-Need to add a sync to remote couchDB backend.
-
-If this gets any bigger than two pages, or is going to be used again, re-add
-karma to the grunt test task and write some tests ya lazy scoundrel.
+Should probably add the couchDB code back in and maybe write some tests, meh.
+It could look nicer but I only spent about 10 minutes copying the old layouts.
 
 
 ### But seriously...
 
-All the good stuff is in app.
-
-Do all the dev stuff (below) to make it an application
-
-Application will be found in dist
-
-Das ist alles.
+It works
 
 
 ## "The Dev Stuff"
 
-    npm install;
-    npm run build:all; #to build once
-    npm run serve; # to serve as an application
+    npm install
+    ng serve
 
-To use brower-sync, in a new terminal navigate to the project root and run:
-
-    browser-sync start --proxy 'localhost:9000'
+    (You may need to install the angular cli if you haven't already: npm install -g @angular/cli)

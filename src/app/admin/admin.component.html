@@ -1,0 +1,158 @@
+<p *ngIf="loading">Loading...</p>
+<div class="row mb-3" *ngIf="!loading">
+    <div class="col-md-12">
+        <p>
+            Add teams or change their monies here. To save the changes to the database, make sure you add the password!
+        </p>
+    </div>
+
+    <div class="col-md-4">
+        <mdb-card class="mb-3">
+            <mdb-card-header class="bg-success text-white">
+                <h4 class="mb-0">Task Completed!</h4>
+            </mdb-card-header>
+            <mdb-card-body>
+                <div class="form-group">
+                    <label for="task-team">Team name</label>
+                    <select [(ngModel)]="taskCompleted.team" id="task-team" class="form-control">
+                        <option *ngFor="let team of teams" [value]="team.name">{{team.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="task-description">Story Number</label>
+                    <select name="task-description" id="task-description" [(ngModel)]="taskCompleted.description" class="form-control" (ngModelChange)="updatePayout()">
+                        <option *ngFor="let story of stories[settings.stories]" value="Story {{story.id.substr(1)}}">{{ story.id.substr(0,1) === "s" ?  "Story" : "Bonus" }} {{story.id.substr(1)}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="task-payout">Value</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">£</div>
+                        </div>
+                        <input type="number" [(ngModel)]="taskCompleted.value" placeholder="0.0" id="task-payout" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="task-secret">Secret Code</label>
+                    <input type="password" [(ngModel)]="taskCompleted.secret" id="task-secret" class="form-control">
+                </div>
+                <div class="form-group mb-0">
+                    <button type="button" (click)="savePayout(taskCompleted)" class="btn btn-success btn-block">Pay this team!</button>
+                </div>
+            </mdb-card-body>
+        </mdb-card>
+    </div>
+
+    <div class="col-md-4">
+        <mdb-card class="mb-3">
+            <mdb-card-header class="bg-danger text-white">
+                <h4 class="mb-0">Cost Incurred!</h4>
+            </mdb-card-header>
+            <mdb-card-body>
+                <div class="form-group">
+                    <label for="cost-team">Team name</label>
+                    <select [(ngModel)]="costIncurred.team" id="cost-team" class="form-control">
+                        <option *ngFor="let team of teams" [value]="team.name">{{team.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cost-value">Minutes Used</label>
+                    <select [(ngModel)]="costIncurred.value" id="cost-value" class="form-control">
+                        <option *ngFor="let minute of minutes" [value]="minute">{{minute}} Min</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cost-secret">Secret Code</label>
+                    <input type="password" [(ngModel)]="costIncurred.secret" id="cost-secret" class="form-control">
+                </div>
+                <div class="form-group mb-0">
+                    <button type="button" (click)="saveCost(costIncurred)" class="btn btn-danger btn-block">Bill this team!</button>
+                </div>
+            </mdb-card-body>
+        </mdb-card>
+    </div>
+
+    <div class="col-md-4">
+        <mdb-card class="mb-3">
+            <mdb-card-header class="bg-success text-white">
+                <h4 class="mb-0">Bonus earned!</h4>
+            </mdb-card-header>
+            <mdb-card-body>
+                <div class="form-group">
+                    <label for="bonus-team">Team name</label>
+                    <select [(ngModel)]="bonus.team" id="bonus-team" class="form-control">
+                        <option *ngFor="let team of teams" [value]="team.name">{{team.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="task-payout">Value</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">£</div>
+                        </div>
+                        <input type="number" [(ngModel)]="bonus.value" placeholder="0.0" id="bonus-payout" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="bonus-secret">Secret Code</label>
+                    <input type="password" [(ngModel)]="bonus.secret" id="bonus-secret" class="form-control">
+                </div>
+                <div class="form-group mb-0">
+                    <button type="button" (click)="saveBonus(bonus)" class="btn btn-success btn-block">Pay this team!</button>
+                </div>
+            </mdb-card-body>
+        </mdb-card>
+    </div>
+</div>
+  
+<div class="row">
+    <div class="col-md-6">
+        <mdb-card class="mb-3">
+            <mdb-card-header class="bg-info text-white">
+                <h4 class="mb-0">Add a team!</h4>
+            </mdb-card-header>
+            <mdb-card-body>
+                <div class="form-group">
+                    <label for="team-name">Team name</label>
+                    <input type="text" [(ngModel)]="newTeam.name" id="team-name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="team-description">Team description</label>
+                    <input type="text" [(ngModel)]="newTeam.description" id="team-description" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="team-balance">Starting balance</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">£</div>
+                        </div>
+                        <input type="number" [(ngModel)]="newTeam.balance" placeholder="0.00" id="team-balance" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group mb-0">
+                    <button type="button" (click)="addTeam(newTeam)" class="btn btn-info btn-block">Save New Team!</button>
+                </div>
+            </mdb-card-body>
+        </mdb-card>
+    </div>
+
+    <div class="col-md-6">
+        <mdb-card class="mb-3">
+            <mdb-card-header class="bg-info text-white">
+                <h4 class="mb-0">Remove a team!</h4>
+            </mdb-card-header>
+            <mdb-card-body>
+                <div class="form-group">
+                    <label for="remove-team-name">Team name</label>
+                    <select id="remove-team-name" [(ngModel)]="deleteTeam.team" class="form-control">
+                        <option *ngFor="let team of teams" [value]="team.name">{{team.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group mb-0">
+                    <button type="button" (click)="removeTeam(deleteTeam.team)" class="btn btn-info btn-block">Remove Team!</button>
+                </div>
+            </mdb-card-body>
+        </mdb-card>
+    </div>
+</div>

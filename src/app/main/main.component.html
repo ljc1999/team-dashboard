@@ -1,0 +1,55 @@
+<p *ngIf="loading">Loading...</p>
+<div *ngIf="!loading">
+  <div class="row">
+    <div class="col-5">
+      <mdb-card class="mb-3">
+        <mdb-card-header class="cyan text-white">
+          <h4 class="mb-0">Team Totals</h4>
+        </mdb-card-header>
+        <mdb-card-body>
+            <chart [options]="teamTotalsChart" id="teamTotalsChart"></chart>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+
+    <div class="col-7">
+      <mdb-card class="mb-3">
+        <mdb-card-header class="cyan text-white">
+          <h4 class="mb-0">Rise & Fall of Teams</h4>
+        </mdb-card-header>
+        <mdb-card-body>
+            <chart [options]="riseFallChart" id="riseFallChart"></chart>
+        </mdb-card-body>
+      </mdb-card>
+
+      <mdb-card class="mb-3">
+        <mdb-card-header class="cyan text-white">
+          <h4 class="mb-0">Current Stories</h4>
+        </mdb-card-header>
+        <mdb-card-body>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Team Name</th>
+                <th>Current Balance</th>
+                <th>Last Completed Story</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let team of teams">
+                <td>{{ team.name }}</td>
+                <td>£{{ team.balance }}</td>
+                <td>{{ team.currentStory ? team.currentStory : 'None' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </mdb-card-body>
+      </mdb-card>
+
+    <div *ngIf="error" class="alert alert-danger">
+      <strong>{{error.statusText}}</strong>
+      <hr>
+      <p>{{error.description}}</p>
+    </div>
+  </div>
+</div>

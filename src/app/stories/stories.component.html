@@ -1,0 +1,22 @@
+<p *ngIf="loading">Loading...</p>
+<div class="row" *ngIf="!loading">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Acceptance Criteria</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let story of stories[settings.stories]">
+        <th>{{story.id.toUpperCase()}}</th>
+        <td>{{story.description}}</td>
+        <td>{{story.acceptance}}</td>
+        <td>{{story.value}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>  

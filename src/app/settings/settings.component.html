@@ -1,0 +1,26 @@
+<p *ngIf="loading">Loading...</p>
+<div class="form-horizontal clearfix" *ngIf="!loading">
+  <div class="form-group">
+      <label class="col-sm-3" for="mission-stories">Current Mission Stories</label>
+      <div class="col-sm-9">
+        <select type="text" [(ngModel)]="settings.stories" id="mission-stories" class="form-control">
+          <option *ngFor="let story of stories | keyvalue" [value]="story.key">
+            {{story.key}}
+          </option>
+        </select>
+      </div>
+  </div>
+  <div class="form-group">
+      <label class="col-sm-3" for="hire-cost">Robot Hire Cost</label>
+      <div class="col-sm-9">
+        <input type="text" [(ngModel)]="settings.robotHireCost" id="hire-cost" class="form-control">
+      </div>
+  </div>
+  <hr />
+  <div class="form-group">
+      <div class="col-sm-9 col-sm-offset-3">
+        <button (click)="saveAppSettings(settings)" class="btn btn-primary">Save settings</button>
+        <button (click)="clearAppSettings(settings)" class="btn btn-danger pull-right">Clear settings</button>
+      </div>
+  </div>
+</div>

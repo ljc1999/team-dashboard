@@ -22,7 +22,7 @@
     "@angular/router": "^6.0.0",
     "@types/chart.js": "^2.7.40",
     "angular-2-local-storage": "^2.0.0",
-    "angular-bootstrap-md": "^7.0.0",
+    "angular-bootstrap-md": "^7.5.4",
     "angular2-highcharts": "^0.5.5",
     "chart.js": "^2.7.2",
     "core-js": "^2.5.4",

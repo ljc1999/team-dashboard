@@ -35,7 +35,7 @@ export class MainComponent implements OnInit {
     }, (error:any) => console.log(error));
 
     this.settings = this.settingsService.getAll();
-    this.teams = _.sortBy(this.teamService.get(), "name");
+    this.teams = _.sortBy(this.teamService.get(), function(data) { return -data.balance; });
 
     let series = [];
 

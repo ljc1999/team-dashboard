@@ -25,7 +25,7 @@ export class SettingsComponent implements OnInit {
       this.stories = res.json().missions;
       this.loading = false;
     }, (error:any) => console.log(error));
-    
+
     this.settings = this.settingsService.getAll();
   }
 

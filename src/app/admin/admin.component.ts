@@ -28,6 +28,7 @@ export class AdminComponent implements OnInit {
 
   newTeam:any = {};
   deleteTeam:any = {};
+  updateTeam:any = {};
 
   minutes:any = [];
 
@@ -95,7 +96,6 @@ export class AdminComponent implements OnInit {
 
       this.newTeam = {
           balance: '',
-          description: '',
           name: ''
       };
     }

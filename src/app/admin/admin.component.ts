@@ -41,7 +41,7 @@ export class AdminComponent implements OnInit {
     this.settings = this.settingsService.getAll();
     this.teams = this.teamService.get();
 
-    for(let i=1; i<=20; i++) {
+    for(let i=1; i<=50; i++) {
       this.minutes.push(i);
     }
   }

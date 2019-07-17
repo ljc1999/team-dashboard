@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 import { TeamService } from '../team.service';
 import { SettingsService } from '../settings.service';
 import * as _ from 'underscore';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-main',
@@ -14,26 +16,36 @@ export class MainComponent implements OnInit {
   constructor(
     private http: Http,
     private teamService: TeamService,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private firestore: AngularFirestore
   ) { }
 
   loading = true;
   teams;
   settings;
   graphsReady = false;
-  stories;
   teamTotals;
   highChart;
 
   teamTotalsChart;
   riseFallChart;
 
-  ngOnInit() {
-    this.http.get("./assets/stories.json").subscribe((res:any) => {
-      this.stories = res.json().missions;
-      this.loading = false;
-    }, (error:any) => console.log(error));
+  mission;
 
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+        if(params["id"]) {
+            this.firestore.collection("missions").doc(params["id"]).get().subscribe(doc => {
+                this.mission = doc;
+                this.loading = false;
+                console.log(doc);
+            });
+        } else {
+            this.router.navigate(['/']);
+        }
+    });
     this.settings = this.settingsService.getAll();
     this.teams = _.sortBy(this.teamService.get(), function(data) { return -data.balance; });
 

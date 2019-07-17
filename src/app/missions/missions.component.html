@@ -1,0 +1,48 @@
+<mdb-card class="mb-3">
+  <mdb-card-header class="cyan text-white">
+      <h4 class="mb-0">Missions</h4>
+  </mdb-card-header>
+  <mdb-card-body>
+      <button type="button" mdbBtn color="success" mdbWavesEffect size="sm" (click)="createModal.show()">New Mission</button>
+
+      <h2>Missions:</h2>
+
+      <p *ngFor="let mission of missions">{{mission.id}}</p>
+  </mdb-card-body>
+</mdb-card>
+
+<div mdbModal #createModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="createModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">New Mission</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="mission-stories">Mission Stories</label>
+          <select type="text" [(ngModel)]="missionData.stories" id="mission-stories" class="form-control">
+            <option *ngFor="let story of stories | keyvalue" [value]="story.key">
+              {{story.key}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+            <label for="hire-cost">Robot Hire Cost</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">£</div>
+                </div>
+                <input type="number" [(ngModel)]="missionData.robotHireCost" placeholder="0.0" id="hire-cost" class="form-control">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" mdbBtn color="danger" class="waves-light" aria-label="Close" (click)="createModal.hide()" mdbWavesEffect size="sm">Cancel</button>
+          <button type="button" mdbBtn color="success" class="relative waves-light" mdbWavesEffect size="sm" (click)="newMission()">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,11 +7,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  selector: 'app-mission',
+  templateUrl: './mission.component.html',
+  styleUrls: ['./mission.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MissionComponent implements OnInit {
 
   constructor(
     private http: Http,

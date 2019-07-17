@@ -5,10 +5,10 @@
   <links>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" [ngClass]="{ 'active': isActiveUrl('/mission') }" *ngIf="!isActiveUrl('/')">
-            <a class="nav-link waves-light" mdbWavesEffect routerLink="">Team Standings <span class="sr-only" *ngIf="router.url == '/'">(current)</span></a>
+            <a class="nav-link waves-light" mdbWavesEffect routerLink="">Overview <span class="sr-only" *ngIf="router.url == '/'">(current)</span></a>
         </li>
         <li class="nav-item" [ngClass]="{ 'active': isActiveUrl('/admin') }" *ngIf="!isActiveUrl('/')">
-            <a class="nav-link waves-light" mdbWavesEffect routerLink="admin">Admin <span class="sr-only" *ngIf="router.url == '/'">(current)</span></a>
+            <a class="nav-link waves-light" mdbWavesEffect routerLink="teams">Teams <span class="sr-only" *ngIf="router.url == '/'">(current)</span></a>
         </li>
         <li class="nav-item" [ngClass]="{ 'active': isActiveUrl('/stories') }" *ngIf="!isActiveUrl('/')">
             <a class="nav-link waves-light" mdbWavesEffect routerLink="stories">Stories <span class="sr-only" *ngIf="router.url == '/'">(current)</span></a>

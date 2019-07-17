@@ -8,8 +8,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AppComponent } from './app.component';
-import { MainComponent } from './main/main.component';
-import { AdminComponent } from './admin/admin.component';
+import { MissionComponent } from './mission/mission.component';
+import { TeamsComponent } from './teams/teams.component';
 import { StoriesComponent } from './stories/stories.component';
 import { SettingsComponent } from './settings/settings.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -30,8 +30,8 @@ export function highchartsFactory() {
 
 const routes = [
   { path: '', component: MissionsComponent },
-  { path: 'mission/:id', component: MainComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'mission/:id', component: MissionComponent },
+  { path: 'admin', component: TeamsComponent },
   { path: 'stories', component: StoriesComponent },
   { path: 'settings', component: SettingsComponent }
 ]; 
@@ -39,9 +39,9 @@ const routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
+    MissionComponent,
     StoriesComponent,
-    AdminComponent,
+    TeamsComponent,
     SettingsComponent,
     MissionsComponent
   ],

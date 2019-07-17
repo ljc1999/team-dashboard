@@ -5,11 +5,11 @@ import { TeamService } from '../team.service';
 import * as _ from 'underscore';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  selector: 'app-teams',
+  templateUrl: './teams.component.html',
+  styleUrls: ['./teams.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class TeamsComponent implements OnInit {
 
   constructor(
     private http: Http,

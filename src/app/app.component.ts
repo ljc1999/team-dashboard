@@ -25,7 +25,10 @@ export class AppComponent {
   }
 
   public isActiveUrl(url) {
-    return url == '/' && this.router.url == '/' ? true : this.router.url.indexOf(url) > -1;
+    if(url == '/') {
+      return this.router.url == '/';
+    }
+    return this.router.url.indexOf(url) > -1;
   }
 
   public login() {

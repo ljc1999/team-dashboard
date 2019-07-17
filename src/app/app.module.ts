@@ -31,8 +31,8 @@ export function highchartsFactory() {
 const routes = [
   { path: '', component: MissionsComponent },
   { path: 'mission/:id', component: MissionComponent },
-  { path: 'admin', component: TeamsComponent },
-  { path: 'stories', component: StoriesComponent },
+  { path: 'teams', component: TeamsComponent },
+  { path: 'mission/:id/stories', component: StoriesComponent },
   { path: 'settings', component: SettingsComponent }
 ]; 
 

@@ -19,7 +19,7 @@
             <a class="nav-link waves-light" mdbWavesEffect (click)="login()"><i class="fa fa-user fa-lg white-text"></i> Login</a>
         </li>
         <li class="nav-item" *ngIf="user">
-            <a class="nav-link waves-light" mdbWavesEffect><img src="{{user.photoURL}}" width="30px" /> {{ user.displayName }}</a>
+            <a class="nav-link waves-light" mdbWavesEffect (click)="logout()"><img src="{{user.photoURL}}" width="30px" /> {{ user.displayName }}</a>
         </li>
       </ul>
   </links>

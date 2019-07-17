@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { SettingsService } from '../settings.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-missions',
@@ -12,7 +13,8 @@ export class MissionsComponent implements OnInit {
 
   constructor(
     public http: Http,
-    public firestore: AngularFirestore
+    public firestore: AngularFirestore,
+    public userService: UserService
   ) { }
   
   stories;

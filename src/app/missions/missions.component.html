@@ -3,11 +3,13 @@
       <h4 class="mb-0">Missions</h4>
   </mdb-card-header>
   <mdb-card-body>
-      <button type="button" mdbBtn color="success" mdbWavesEffect size="sm" (click)="createModal.show()">New Mission</button>
+      <button *ngIf="userService.admin" type="button" mdbBtn color="success" mdbWavesEffect size="sm" (click)="createModal.show()">New Mission</button>
 
       <h2>Missions:</h2>
 
-      <p *ngFor="let mission of missions">{{mission.id}}</p>
+      <p *ngFor="let mission of missions">
+        <a [routerLink]="['mission', mission.id]">{{mission.id}}</a>
+      </p>
   </mdb-card-body>
 </mdb-card>
 

@@ -12,7 +12,7 @@ import { UserService } from './user.service';
 export class AppComponent {
   constructor(
     public router: Router,
-    public auth: AngularFireAuth,
+    public fireauth: AngularFireAuth,
     public userService: UserService
   ) {}
 
@@ -29,6 +29,10 @@ export class AppComponent {
   }
 
   public login() {
-    this.auth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    this.fireauth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+  }
+
+  public logout() {
+    this.fireauth.auth.signOut();
   }
 }
